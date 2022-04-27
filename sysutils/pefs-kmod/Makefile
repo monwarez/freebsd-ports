@@ -17,8 +17,8 @@ BROKEN_FreeBSD_14=	crashes on mount due to INVARIANTS
 
 USES=		kmod uidfix
 USE_GITHUB=	yes
-GH_ACCOUNT=	freebsd-pefs
-GH_TAGNAME=	4e03778
+GH_ACCOUNT=	DanielO
+GH_TAGNAME=	2adf8cb
 
 MAKE_JOBS_UNSAFE=yes
 MAKE_ENV=	BINDIR="${PREFIX}/sbin" MANDIR="${MANPREFIX}/man/man"
