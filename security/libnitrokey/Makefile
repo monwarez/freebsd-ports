@@ -2,7 +2,7 @@
 
 PORTNAME=	libnitrokey
 DISTVERSIONPREFIX=	v
-DISTVERSION=	3.6
+DISTVERSION=	3.7
 CATEGORIES=	security
 MASTER_SITES=	https://github.com/Nitrokey/${PORTNAME}/releases/download/${DISTVERSIONPREFIX}${DISTVERSION}/
 
