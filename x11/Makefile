@@ -265,6 +265,7 @@
     SUBDIR += nwg-look
     SUBDIR += nwg-menu
     SUBDIR += nxcomp
+    SUBDIR += openrgb
     SUBDIR += p5-Clipboard
     SUBDIR += p5-X11-GUITest
     SUBDIR += p5-X11-IdleTime
