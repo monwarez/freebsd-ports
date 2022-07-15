@@ -1,7 +1,7 @@
 PORTNAME=	barony
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.3.7
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	games
 
 MAINTAINER=	devnexen@gmail.com
@@ -19,8 +19,9 @@ LIB_DEPENDS=	libogg.so:audio/libogg \
 USES=		cmake:insource compiler:c++11-lib dos2unix gl localbase:ldflags \
 		openal pkgconfig sdl
 USE_GITHUB=	yes
-GH_ACCOUNT=	TurningWheel
+GH_ACCOUNT=	monwarez
 GH_PROJECT=	Barony
+GH_TAGNAME=	a62d5310
 USE_GL=		gl glu
 USE_SDL=	sdl2 image2 net2 ttf2
 
