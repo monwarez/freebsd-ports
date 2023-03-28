@@ -1,0 +1,10 @@
+--- src/nvidia/nv-freebsd.h.orig	2023-03-28 22:14:28 UTC
++++ src/nvidia/nv-freebsd.h
+@@ -144,6 +144,7 @@ struct nvidia_alloc {
+ typedef
+ struct nvidia_alloc {
+     vm_memattr_t attr;
++    uint32_t num_pages;
+     uint32_t size;
+     int alloc_type_contiguous;
+     struct nvidia_pte *pte_array;
