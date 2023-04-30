@@ -1,0 +1,43 @@
+# nvidia-drm.ko Kernel module port
+#
+# This comes from the following repo:
+# https://github.com/amshafer/nvidia-driver
+
+PORTNAME=	nvidia-drm-515-kmod
+PORTVERSION=	${NVIDIA_DISTVERSION}
+CATEGORIES=	graphics kld
+
+MAINTAINER=	ashafer@badland.io
+COMMENT=	NVIDIA DRM Kernel Module
+WWW=		https://github.com/amshafer/nvidia-driver
+
+ONLY_FOR_ARCHS=	amd64
+USES=		kmod
+
+SUB_FILES=	20-nvidia-drm-outputclass.conf
+
+RUN_DEPENDS=	${KMODDIR}/drm.ko:graphics/drm-515-kmod \
+	${KMODDIR}/nvidia.ko:x11/nvidia-driver
+
+.include "${.CURDIR}/../drm-515-kmod/Makefile.version"
+.include "${.CURDIR}/../../x11/nvidia-driver/Makefile.version"
+
+LICENSE_FILE=	${WRKSRC}/nvidia/doc/license.txt
+
+NVIDIA_GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
+USE_GITHUB=	yes
+GH_ACCOUNT=	amshafer freebsd:drm
+GH_PROJECT=	nvidia-driver drm-kmod:drm
+GH_TAGNAME:=	${NVIDIA_GH_TAGNAME} ${DRM_KMOD_GH_TAGNAME}:drm
+
+PLIST_FILES=	${KMODDIR}/nvidia-drm.ko \
+	share/X11/xorg.conf.d/20-nvidia-drm-outputclass.conf
+
+MAKE_ENV+=	DRMKMODDIR=${WRKDIR}/drm-kmod-${DRM_KMOD_GH_TAGNAME}/
+WRKSRC=		${WRKDIR}/nvidia-driver-${NVIDIA_GH_TAGNAME}/nvidia/src/nvidia-drm/
+
+post-install:
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/X11/xorg.conf.d/
+	${INSTALL_DATA} ${WRKDIR}/20-nvidia-drm-outputclass.conf ${STAGEDIR}${PREFIX}/share/X11/xorg.conf.d/
+
+.include <bsd.port.mk>
