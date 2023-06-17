@@ -1,5 +1,5 @@
 PORTNAME=	nvidia-libs
-DISTVERSION?=	525.116.03
+DISTVERSION?=	${NVIDIA_DISTVERSION}
 # Always try to set PORTREVISION as it can be overridden by the slave ports
 PORTREVISION?=	0
 CATEGORIES=	x11 linux
@@ -13,6 +13,7 @@ COMMENT=	NVidia graphics libraries and programs (Linux version)
 WWW=		https://www.nvidia.com/object/unix.html
 
 LICENSE_FILE=	${WRKSRC}/LICENSE
+.include "${.CURDIR}/../nvidia-driver/Makefile.version"
 .include "${.CURDIR}/../nvidia-driver/Makefile.common"
 
 .if ${DISTVERSION:R} > 390
@@ -122,7 +123,11 @@ PLIST_RE+=	'\,${LINUXBASE}.*libGLESv(1_CM|2)_nvidia\.so,d' \
 		'\,${LINUXBASE}.*libGLX_(nvidia|indirect)\.so,d' \
 		'\,${LINUXBASE}.*libnvidia-ptxjitcompiler\.so,d'
 .endif
-.if ${NVVERSION} >= 525.08902 # 525.89.02
+.if ${NVVERSION} >= 530.03002 # 530.41.03
+LINUX_LIBS+=	libnvidia-egl-wayland.so.1.1.11
+LINUX_LINKS+=	libnvidia-egl-wayland.so.1.1.11 libnvidia-egl-wayland.so.1
+PLIST_RE+=	'\,${LINUXBASE},s/(libnvidia-egl-wayland\.so)\.X/\1.1.1.11/'
+.elif ${NVVERSION} >= 525.08902 # 525.89.02
 LINUX_LIBS+=	libnvidia-egl-wayland.so.1.1.10
 LINUX_LINKS+=	libnvidia-egl-wayland.so.1.1.10 libnvidia-egl-wayland.so.1
 PLIST_RE+=	'\,${LINUXBASE},s/(libnvidia-egl-wayland\.so)\.X/\1.1.1.10/'
