@@ -34,6 +34,7 @@ PLIST_FILES=	${KMODDIR}/nvidia-drm.ko \
 	share/X11/xorg.conf.d/20-nvidia-drm-outputclass.conf
 
 MAKE_ENV+=	DRMKMODDIR=${WRKDIR}/drm-kmod-${DRM_KMOD_GH_TAGNAME}/
+MAKE_ARGS+=	BINOWN=`id -u` BINGRP=`id -g`
 WRKSRC=		${WRKDIR}/nvidia-driver-${NVIDIA_GH_TAGNAME}/nvidia/src/nvidia-drm/
 
 post-install:
