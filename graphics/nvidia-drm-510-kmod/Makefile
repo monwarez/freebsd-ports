@@ -12,7 +12,7 @@ COMMENT=	NVIDIA DRM Kernel Module
 WWW=		https://github.com/amshafer/nvidia-driver
 
 ONLY_FOR_ARCHS=	amd64
-USES=		kmod
+USES=		kmod uidfix
 
 SUB_FILES=	20-nvidia-drm-outputclass.conf
 
@@ -34,7 +34,6 @@ PLIST_FILES=	${KMODDIR}/nvidia-drm.ko \
 	share/X11/xorg.conf.d/20-nvidia-drm-outputclass.conf
 
 MAKE_ENV+=	DRMKMODDIR=${WRKDIR}/drm-kmod-${DRM_KMOD_GH_TAGNAME}/
-MAKE_ARGS+=	BINOWN=`id -u` BINGRP=`id -g`
 WRKSRC=		${WRKDIR}/nvidia-driver-${NVIDIA_GH_TAGNAME}/nvidia/src/nvidia-drm/
 
 post-install:
