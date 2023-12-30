@@ -11,6 +11,10 @@ WWW=		https://github.com/42wim/matterbridge
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+FLAVORS=	default whatsappmulti
+whatsappmulti_PKGNAMESUFFIX=	-whatsappmulti
+FLAVOR?=	${FLAVORS:[1]}
+
 USES=		go:modules
 
 USE_GITHUB=	yes
@@ -183,6 +187,7 @@ GL_TUPLE=	\
 		cznic:strutil:bba0c72b66bb9ced2dfd2ee521b7f16b2cbb39fa:cznic_strutil/vendor/modernc.org/strutil \
 		cznic:token:a1b392cca155ddafa8e1e45905db0dfe27cd4714:cznic_token/vendor/modernc.org/token
 
+
 post-extract:
 	@${MKDIR} ${WRKSRC}/vendor/github.com/russross
 	@${RLN} ${WRKSRC_fsnotify_fsnotify} ${WRKSRC}/vendor/github.com/russross/blackfriday
@@ -193,4 +198,10 @@ post-extract:
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/matterbridge.toml.sample ${STAGEDIR}${PREFIX}/etc/matterbridge.toml.sample
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${FLAVOR} == whatsappmulti
+GO_BUILDFLAGS+=	-tags whatsappmulti
+.endif
+
+.include <bsd.port.post.mk>
