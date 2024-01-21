@@ -1,6 +1,6 @@
 PORTNAME=	evolution-data-server
 DISTVERSION=	3.44.4
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	databases gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -31,7 +31,7 @@ LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		bdb:5 cmake compiler:c++11-lib cpe gettext gnome gperf \
+USES=		cmake compiler:c++11-lib cpe gettext gnome gperf \
 		iconv:wchar_t localbase pathfix pkgconfig python:build\
 		sqlite tar:xz xorg
 USE_CXXSTD=	gnu++11
@@ -41,10 +41,8 @@ USE_LDCONFIG=	yes
 CPE_VENDOR=	gnome
 
 CMAKE_ARGS=	-DENABLE_INTROSPECTION=ON \
-		-DENABLE_UOA=OFF
-
-CMAKE_ARGS+=	-DWITH_LIBDB_CFLAGS=-I${LOCALBASE}/include/db5 \
-		-DWITH_LIBDB_LIBS="-L${LOCALBASE}/lib -ldb-5"
+		-DENABLE_UOA=OFF \
+		-DWITH_LIBDB=OFF
 
 GLIB_SCHEMAS=	org.gnome.evolution-data-server.addressbook.gschema.xml \
 		org.gnome.evolution-data-server.calendar.gschema.xml \
