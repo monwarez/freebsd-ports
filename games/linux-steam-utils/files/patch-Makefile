@@ -1,0 +1,11 @@
+--- Makefile.orig	2024-02-17 04:35:51 UTC
++++ Makefile
+@@ -95,7 +95,7 @@ install:
+ 	install -d `dirname $(PREFIX)/$(PROJECT)/${f:C|$(BUILD_DIR)/(.*)|\1|}`
+ 	install $(f) $(PREFIX)/$(PROJECT)/${f:C|$(BUILD_DIR)/(.*)|\1|}
+ .endfor
+-	install bin/lsu-* bin/steam bin/steam-install $(PREFIX)/$(PROJECT)/bin
++	install bin/lsu-* bin/steam bin/steam-install bin/.utils.rb $(PREFIX)/$(PROJECT)/bin
+ 	install \
+  lxbin/curl-config \
+  lxbin/dbus-launch \
