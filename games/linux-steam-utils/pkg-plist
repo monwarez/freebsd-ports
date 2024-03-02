@@ -2,10 +2,10 @@ bin/lsu-register-proton
 bin/lsu-wine-env
 bin/steam
 bin/steam-install
+steam-utils/bin/.dpkgs.rb
 steam-utils/bin/.utils.rb
 steam-utils/bin/lsu-freebsd-to-linux-env
 steam-utils/bin/lsu-mount-runtime
-steam-utils/bin/lsu-register-proton
 steam-utils/bin/lsu-run-in-chroot
 steam-utils/bin/lsu-umount
 steam-utils/bin/lsu-wine-env
@@ -36,10 +36,10 @@ steam-utils/lxbin/file.rb
 steam-utils/lxbin/lsof
 steam-utils/lxbin/lspci
 steam-utils/lxbin/lsu-linux-to-freebsd-env
-steam-utils/lxbin/lsu-proton
+steam-utils/lxbin/lsu-webhelper-chroot
+steam-utils/lxbin/lsu-webhelper-chroot.rb
 steam-utils/lxbin/patch-steam
 steam-utils/lxbin/patch-steam.rb
-@comment steam-utils/lxbin/python3
 steam-utils/lxbin/tar
 steam-utils/lxbin/upgrade-steam-runtime
 steam-utils/lxbin/upgrade-steam-runtime.rb
