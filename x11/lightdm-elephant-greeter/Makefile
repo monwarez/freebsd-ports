@@ -21,11 +21,11 @@ do-configure:
 	@${REINPLACE_CMD} -e 's|INSTALL_PATH|${LOCALBASE}|' ${WRKSRC}/elephant-greeter.conf
 
 do-install:
-	@${MKDIR} ${STAGEDIR}${ETCDIR}/lightdm
+	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/lightdm
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/lightdm/greeters
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/elephant-greeter
 
-	${INSTALL_DATA} ${WRKSRC}/elephant-greeter.conf ${STAGEDIR}${ETCDIR}
+	${INSTALL_DATA} ${WRKSRC}/elephant-greeter.conf ${STAGEDIR}${PREFIX}/etc/lightdm
 	${INSTALL_PROGRAM} ${WRKSRC}/elephant-greeter.py ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_DATA} ${WRKSRC}/lightdm-elephant-greeter.desktop ${STAGEDIR}${PREFIX}/share/lightdm/greeters
 	${INSTALL_DATA} ${WRKSRC}/lightdm-elephant-greeter-x11.desktop ${STAGEDIR}${PREFIX}/share/lightdm/greeters
