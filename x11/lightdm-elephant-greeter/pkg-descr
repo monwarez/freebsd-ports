@@ -1,0 +1,3 @@
+A small and simple LightDM greeter using Python and GTK that doesn't require an X11 server.
+
+It is based on Matt Shultz's Fischer's example LightDM greeter.
