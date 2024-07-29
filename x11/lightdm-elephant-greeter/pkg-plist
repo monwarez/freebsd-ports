@@ -1,0 +1,10 @@
+bin/elephant-greeter.py
+%%ETCDIR%%/elephant-greeter.conf
+share/elephant-greeter/elephant-greeter.ui
+share/elephant-greeter/img/X.png
+share/elephant-greeter/img/X.svg
+share/elephant-greeter/img/wayland.png
+share/elephant-greeter/img/wayland.svg
+share/lightdm/greeters/lightdm-elephant-greeter-x11.desktop
+share/lightdm/greeters/lightdm-elephant-greeter.desktop
+@dir %%ETCDIR%%/lightdm
