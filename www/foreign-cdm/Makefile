@@ -1,6 +1,6 @@
 PORTNAME=	foreign-cdm
 PORTVERSION=	20231217
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	www multimedia linux
 MASTER_SITES=	https://arrowd.name/:cdm
 DISTFILES=	cdm-${CDM_INT_HASH}.tar.gz:cdm
@@ -13,11 +13,14 @@ LICENSE=	MIT
 
 ONLY_FOR_ARCHS=	amd64
 
-BUILD_DEPENDS=	cmake:devel/cmake-core \
-		linux-c7-devtoolset>0:devel/linux-c7-devtoolset
-RUN_DEPENDS=	linux_base-c7>0:emulators/linux_base-c7
+BUILD_DEPENDS=	cmake:devel/cmake-core 
+
+USES=		linux:rl9
 
 USE_GITHUB=	yes
+USE_LDCONFIG=	yes
+USE_LINUX=	base:build,run devtools:build
+
 GH_ACCOUNT=	shkhln
 GH_PROJECT=	foreign-cdm
 GH_TAGNAME=	3fe4d7130bb1e0581b5310635515a120f2794b88
