@@ -131,6 +131,8 @@ CMAKE_NOCOLOR=		yes
 
 .    if defined(CMAKE_NOCOLOR)
 CMAKE_ARGS+=		-DCMAKE_COLOR_MAKEFILE:BOOL=OFF
+# Use CONFIGURE_ENV since this need to be set when calling cmake and not as an argument
+CONFIGURE_ENV+=		CLICOLOR=0
 .    endif
 .  endif
 
