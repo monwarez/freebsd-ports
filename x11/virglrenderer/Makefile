@@ -1,5 +1,6 @@
 PORTNAME=	virglrenderer
 DISTVERSION=	1.0.1
+PORTREVISION=	1
 CATEGORIES=	x11
 
 MAINTAINER=	monwarez@mailoo.org
@@ -22,5 +23,14 @@ USE_GL=		gbm
 USE_XORG=	x11
 
 BINARY_ALIAS=	python3=${PYTHON_CMD}
+
+OPTIONS_DEFINE=	VENUS
+OPTIONS_DEFAULT=VENUS
+
+VENUS_DESC=	Support for vulkan
+VENUS_MESON_TRUE= venus
+VENUS_BUILD_DEPENDS=vulkan-headers>0:graphics/vulkan-headers
+VENUS_LIB_DEPENDS=libvulkan.so:graphics/vulkan-loader \
+		  libepoll-shim.so:devel/libepoll-shim
 
 .include <bsd.port.mk>

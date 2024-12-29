@@ -1,0 +1,16 @@
+--- meson.build.orig	2024-01-08 20:00:59 UTC
++++ meson.build
+@@ -289,6 +289,13 @@ if with_venus
+    endif
+    venus_dep = dependency('vulkan')
+ 
++   if host_machine.system() in ['freebsd', 'openbsd']
++	# When building for FreeBSD, epoll(7) is provided by a userspace
++	# wrapper around kqueue(2).
++	epoll_dep = dependency('epoll-shim')
++   else
++	epoll_dep = []
++   endif
+    conf_data.set('ENABLE_VENUS', 1)
+ 
+    if get_option('venus-validate')
