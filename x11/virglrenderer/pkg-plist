@@ -5,3 +5,4 @@ lib/libvirglrenderer.so
 lib/libvirglrenderer.so.1
 lib/libvirglrenderer.so.1.8.9
 libdata/pkgconfig/virglrenderer.pc
+libexec/virgl_render_server
