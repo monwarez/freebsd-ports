@@ -33,6 +33,7 @@ include/GL/internal/dri_interface.h
 %%swrast%%lib/dri/kms_swrast_dri.so
 %%swrast%%lib/dri/swrast_dri.so
 %%zink%%lib/dri/zink_dri.so
+%%virgl%%lib/dri/virtio_gpu_dri.so
 @comment lib/libEGL.so
 @comment lib/libEGL.so.1
 @comment lib/libEGL.so.1.0.0
