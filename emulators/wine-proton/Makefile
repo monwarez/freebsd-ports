@@ -1,6 +1,6 @@
 PORTNAME=	wine-proton
 DISTVERSION=	9.0-3
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	emulators
 
 MAINTAINER=	iwtcex@gmail.com
