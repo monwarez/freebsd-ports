@@ -1,0 +1,25 @@
+--- usr/bin/update-ca-trust.orig	2024-08-21 16:54:48 UTC
++++ usr/bin/update-ca-trust
+@@ -75,15 +75,15 @@ extract() {
+ 
+ 	# OpenSSL PEM bundle that includes trust flags
+ 	# (BEGIN TRUSTED CERTIFICATE)
+-	/usr/bin/trust extract --format=openssl-bundle --filter=certificates --overwrite --comment "$DEST/openssl/ca-bundle.trust.crt"
+-	/usr/bin/trust extract --format=pem-bundle --filter=ca-anchors --overwrite --comment --purpose server-auth "$DEST/pem/tls-ca-bundle.pem"
+-	/usr/bin/trust extract --format=pem-bundle --filter=ca-anchors --overwrite --comment --purpose email "$DEST/pem/email-ca-bundle.pem"
+-	/usr/bin/trust extract --format=pem-bundle --filter=ca-anchors --overwrite --comment --purpose code-signing "$DEST/pem/objsign-ca-bundle.pem"
+-	/usr/bin/trust extract --format=java-cacerts --filter=ca-anchors --overwrite --purpose server-auth "$DEST/java/cacerts"
+-	/usr/bin/trust extract --format=edk2-cacerts --filter=ca-anchors --overwrite --purpose=server-auth "$DEST/edk2/cacerts.bin"
++	/usr/local/bin/trust extract --format=openssl-bundle --filter=certificates --overwrite --comment "$DEST/openssl/ca-bundle.trust.crt"
++	/usr/local/bin/trust extract --format=pem-bundle --filter=ca-anchors --overwrite --comment --purpose server-auth "$DEST/pem/tls-ca-bundle.pem"
++	/usr/local/bin/trust extract --format=pem-bundle --filter=ca-anchors --overwrite --comment --purpose email "$DEST/pem/email-ca-bundle.pem"
++	/usr/local/bin/trust extract --format=pem-bundle --filter=ca-anchors --overwrite --comment --purpose code-signing "$DEST/pem/objsign-ca-bundle.pem"
++	/usr/local/bin/trust extract --format=java-cacerts --filter=ca-anchors --overwrite --purpose server-auth "$DEST/java/cacerts"
++	/usr/local/bin/trust extract --format=edk2-cacerts --filter=ca-anchors --overwrite --purpose=server-auth "$DEST/edk2/cacerts.bin"
+ 	# Hashed directory of BEGIN TRUSTED-style certs (usable as OpenSSL CApath and
+ 	# by GnuTLS)
+-	/usr/bin/trust extract --format=pem-directory-hash --filter=ca-anchors --overwrite --purpose server-auth "$DEST/pem/directory-hash"
++	/usr/local/bin/trust extract --format=pem-directory-hash --filter=ca-anchors --overwrite --purpose server-auth "$DEST/pem/directory-hash"
+ 
+ 	# p11-kit extract will have made this directory unwritable; when run with
+ 	# CAP_DAC_OVERRIDE this does not matter, but in container use cases that may

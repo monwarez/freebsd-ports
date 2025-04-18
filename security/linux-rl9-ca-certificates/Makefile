@@ -1,13 +1,15 @@
 PORTNAME=	ca-certificates
 PORTVERSION=	2024.2.69
 DISTVERSIONSUFFIX=	_v8.0.303-91.4.el9_4
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	security linux
 
 MAINTAINER=	emulation@FreeBSD.org
 COMMENT=	Mozilla CA root certificate bundle (Rocky Linux ${LINUX_DIST_VER})
 
 LICENSE=	PD
+
+BUILD_DEPENDS= p11-kit>=0:security/p11-kit
 
 USES=		linux:rl9
 USE_LINUX=	p11-kit
@@ -23,6 +25,5 @@ post-stage:
 		${SH} -c "tgt=\$$(readlink {}) ; [ \$$tgt != \$${tgt#/} ] && ${RLN} ${STAGEDIR}${PREFIX}\$$tgt {}" \; || ${TRUE}
 	cd ${STAGEDIR}${PREFIX} && \
 		${FIND} etc/pki/ca-trust/extracted/pem/directory-hash -type f -or -type l >> ${TMPPLIST}
-
 
 .include <bsd.port.mk>
