@@ -1,9 +1,12 @@
 PORTNAME=	wine
-DISTVERSION=	10.9
+DISTVERSION=	10.10
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	https://dl.winehq.org/wine/source/10.x/
 PKGNAMESUFFIX=	-devel
+
+PATCH_SITES=	https://gitlab.winehq.org/wine/wine/-/merge_requests/
+PATCHFILES+=	7339.patch:-p1
 
 MAINTAINER=	monwarez@mailoo.org
 COMMENT=	Microsoft Windows compatibility environment
@@ -16,9 +19,10 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 ONLY_FOR_ARCHS=	amd64 i386
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/flex:textproc/flex
+LIB_DEPENDS=	libexpat.so:textproc/expat2
 
 # Only devel/llvm17 and later come with necessary include files - PR274542
-USES=		bison cpe desktop-file-utils gmake \
+USES=		autoreconf bison cpe desktop-file-utils gmake \
 		llvm:min=17,build,noexport localbase \
 		pkgconfig sdl shebangfix tar:xz
 USE_GCC=	yes
@@ -35,6 +39,7 @@ CONFIGURE_ARGS+=--verbose \
 		--without-capi \
 		--without-coreaudio \
 		--without-dbus \
+		--with-expat \
 		--without-gettext --without-gettextpo \
 		--without-gphoto \
 		--without-gssapi \
@@ -43,7 +48,6 @@ CONFIGURE_ARGS+=--verbose \
 		--with-mingw CROSSCC="clang" \
 		--without-netapi \
 		--without-opencl \
-		--without-osmesa \
 		--without-pcap \
 		--without-pcsclite \
 		--with-pthread \
@@ -148,7 +152,7 @@ post-patch:
 	${REINPLACE_CMD} '/Exec/s|wine|wine64|g' ${WRKSRC}/loader/wine.desktop
 
 .else
-EXTRA_PATCHES+=	files/extra-patch-tools-winebuild-res32
+EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-tools-winebuild-res32
 PLIST_SUB+=		WINE32="" WINE64="@comment " WINEARCH="i386"
 .endif
 
