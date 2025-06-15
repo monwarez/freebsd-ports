@@ -1,5 +1,5 @@
 PORTNAME=	steam-utils
-DISTVERSION=	20250521
+DISTVERSION=	20250615
 CATEGORIES=	games linux
 PKGNAMEPREFIX=	linux-
 
@@ -22,6 +22,7 @@ USES=		linux ruby:run
 USE_GITHUB=	yes
 GH_ACCOUNT=	shkhln
 GH_PROJECT=	linuxulator-steam-utils
+GH_TAGNAME=	e19d34e
 
 USE_LINUX=	alsa-plugins-oss dbuslibs devtools:build dri gtk2 nss
 
