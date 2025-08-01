@@ -8,9 +8,12 @@ WWW=		https://www.mesa3d.org/
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/docs/license.rst
 
-USES=		llvm:noexport
+USES=		llvm:lib,noexport
 
-BUILD_DEPENDS=	libglvnd>=0:graphics/libglvnd
+BUILD_DEPENDS=	libglvnd>=0:graphics/libglvnd \
+		libclc-${LLVM_PORT:T}>0:devel/libclc@${LLVM_PORT:T} \
+		spirv-tools>0:graphics/spirv-tools \
+		spirv-llvm-translator-${LLVM_PORT:T}>0:devel/spirv-llvm-translator@${LLVM_PORT:T}
 
 OPTIONS_GROUP=		PLATFORM
 OPTIONS_GROUP_PLATFORM=	X11 WAYLAND
@@ -29,8 +32,13 @@ ZSTD_MESON_ENABLED=	zstd
 
 USE_LDCONFIG=		yes
 
+CONFIGURE_ENV=	PKG_CONFIG_PATH="${LLVM_PREFIX}/libdata/pkgconfig"
+
 .include <bsd.port.options.mk>
 .include "${.CURDIR:H:H}/graphics/mesa-dri/Makefile.common"
+
+# Vulkan Video extensions (keep in sync with mesa-gallium-va)
+MESON_ARGS+=    -Dvideo-codecs="vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1enc,vp9dec"
 
 MESON_ARGS+=	-Dandroid-libbacktrace=disabled \
 		-Dgallium-vdpau=disabled \
@@ -46,8 +54,8 @@ MESON_ARGS+=	-Dandroid-libbacktrace=disabled \
 		-Dgbm=enabled \
 		-Dvulkan-drivers="" \
 		-Dglvnd=enabled
-# Building EGL and GBM requires a driver so add r300
-MESON_ARGS+=	-Dgallium-drivers="r300"
+# Build all drivers else libgallium won't work
+MESON_ARGS+=	-Dgallium-drivers="crocus,i915,iris,r300,r600,radeonsi,svga,zink,virgl"
 
 .if ${PORT_OPTIONS:MX11}
 MESA_PLATFORMS+=	x11

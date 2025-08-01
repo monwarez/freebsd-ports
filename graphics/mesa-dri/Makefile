@@ -1,14 +1,11 @@
 PORTNAME=	mesa-dri
 PORTVERSION=	${MESAVERSION}
-PORTREVISION=	9
 CATEGORIES=	graphics
 
 COMMENT=	OpenGL hardware acceleration drivers for DRI2+
 WWW=		https://www.mesa3d.org/
 
 BUILD_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}ply>0:devel/py-ply@${PY_FLAVOR}
-
-LIB_DEPENDS+=	libglapi.so:graphics/mesa-libs
 
 USES+=		llvm:lib,noexport
 
@@ -27,7 +24,7 @@ WAYLAND_DESC=		Enable Wayland support for GBM/EGL and Vulkan
 WAYLAND_BUILD_DEPENDS=	wayland-protocols>=1.8:graphics/wayland-protocols
 WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland
 
-OPTIONS_GROUP_GALLIUM=	crocus i915 iris panfrost r300 r600 radeonsi svga swrast zink virgl
+OPTIONS_GROUP_GALLIUM=	crocus i915 iris panfrost r300 r600 radeonsi svga zink virgl
 GALLIUM_DESC=		Unified OpenGL drivers
 crocus_DESC=		Intel GPU Gen4 (Broadwater) to Gen7 (Haswell)
 i915_DESC=		Intel GPU Gen3 (Grantsdale to Pineview)
@@ -44,7 +41,6 @@ r300_DESC=		AMD/ATI R300, R400 and R500
 r600_DESC=		AMD/ATI R600, R700, Evergreen, Northern Islands
 radeonsi_DESC=		AMD/ATI Southern Islands and newer
 svga_DESC=		VMWare Virtual GPU
-swrast_DESC=		Software Rasterizer
 zink_DESC=		OpenGL on top of Khronos’ Vulkan API
 virgl_DESC=		VirGL drivers
 

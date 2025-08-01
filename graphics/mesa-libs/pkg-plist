@@ -3,9 +3,17 @@ include/EGL/eglext_angle.h
 include/EGL/eglmesaext.h
 @comment include/GL/internal/dri_interface.h
 include/gbm.h
+include/gbm_backend_abi.h
+@comment lib/dri/crocus_dri.so
+@comment lib/dri/i915_dri.so
+@comment lib/dri/iris_dri.so
 @comment lib/dri/libdril_dri.so
-@comment lib/dri/radeon_dri.so
 @comment lib/dri/r300_dri.so
+@comment lib/dri/r600_dri.so
+@comment lib/dri/radeonsi_dri.so
+@comment lib/dri/virtio_gpu_dri.so
+@comment lib/dri/vmwgfx_dri.so
+@comment lib/dri/zink_dri.so
 lib/gbm/dri_gbm.so
 lib/libEGL_mesa.so
 lib/libEGL_mesa.so.0
@@ -13,7 +21,7 @@ lib/libEGL_mesa.so.0.0.0
 %%GLX%%lib/libGLX_mesa.so
 %%GLX%%lib/libGLX_mesa.so.0
 %%GLX%%lib/libGLX_mesa.so.0.0.0
-@comment lib/libgallium-25.0.0.so
+lib/libgallium-25.1.7.so
 lib/libgbm.so
 lib/libgbm.so.1
 lib/libgbm.so.1.0.0
