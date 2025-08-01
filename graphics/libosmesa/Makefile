@@ -8,8 +8,6 @@ WWW=		https://www.mesa3d.org/
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/docs/license.rst
 
-LIB_DEPENDS+=	libglapi.so:graphics/mesa-libs
-
 USES=		llvm:lib,noexport xorg
 USE_XORG=	xorgproto
 USE_LDCONFIG=	yes
@@ -23,7 +21,6 @@ MESON_ARGS+=	-Dgallium-drivers="swrast" \
 		-Dplatforms="" \
 		-Dandroid-libbacktrace=disabled \
 		-Dgallium-vdpau=disabled \
-		-Dgallium-omx=disabled \
 		-Dgallium-va=disabled \
 		-Dgallium-opencl=disabled \
 		-Dgallium-xa=disabled \
