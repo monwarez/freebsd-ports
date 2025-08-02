@@ -32,7 +32,6 @@ include/GL/internal/dri_interface.h
 %%radeonsi%%lib/dri/radeonsi_dri.so
 %%svga%%lib/dri/vmwgfx_dri.so
 %%zink%%lib/dri/zink_dri.so
-%%virgl%%lib/dri/virtio_gpu_dri.so
 %%X11%%lib/dri/libdril_dri.so
 @comment lib/libEGL.so
 @comment lib/libEGL.so.1
