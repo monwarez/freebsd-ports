@@ -77,7 +77,7 @@ ${_vd}_VARS+=		VULKAN_DRIVERS+=${_vd:S/anv/intel/:S/radv/amd/:S/swrast_vk/swrast
 .include <bsd.port.options.mk>
 .include "${.CURDIR:H:H}/graphics/mesa-dri/Makefile.common"
 
-LDFLAGS_i386=		-Wl,-znotext
+LDFLAGS_i386=		-Wl,-znotext -Wl,--no-keep-memory
 
 .if ${PORT_OPTIONS:MX11}
 MESA_PLATFORMS+=	x11
