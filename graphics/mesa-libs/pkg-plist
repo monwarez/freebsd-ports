@@ -7,7 +7,7 @@ include/gbm_backend_abi.h
 @comment lib/dri/libdril_dri.so
 @comment lib/dri/radeon_dri.so
 @comment lib/dri/r300_dri.so
-@comment lib/gbm/dri_gbm.so
+lib/gbm/dri_gbm.so
 lib/libEGL_mesa.so
 lib/libEGL_mesa.so.0
 lib/libEGL_mesa.so.0.0.0
