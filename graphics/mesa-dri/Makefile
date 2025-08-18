@@ -98,9 +98,9 @@ MESON_ARGS+=	-Dvideo-codecs="vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1en
 
 # Disable some options
 MESON_ARGS+=	-Dandroid-libbacktrace=disabled \
-		-Dgallium-xa=disabled \
 		-Dgallium-vdpau=disabled \
 		-Dgallium-va=disabled \
+		-Dgallium-mediafoundation=disabled \
 		-Dgles1=enabled \
 		-Dgles2=enabled \
 		-Dglvnd=disabled \
@@ -108,7 +108,6 @@ MESON_ARGS+=	-Dandroid-libbacktrace=disabled \
 		-Degl=enabled \
 		-Dlmsensors=disabled \
 		-Dmicrosoft-clc=disabled \
-		-Dosmesa=false \
 		-Dvalgrind=disabled
 
 .if ${ARCH} != amd64
