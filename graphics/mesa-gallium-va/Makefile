@@ -44,16 +44,13 @@ MESON_ARGS+=	-Dvideo-codecs="vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av1en
 		-Dvulkan-drivers="" \
 		-Dandroid-libbacktrace=disabled \
 		-Dgallium-vdpau=disabled \
-		-Dgallium-xa=disabled \
-		-Dgallium-opencl=disabled \
-		-Dgallium-nine=false \
+		-Dgallium-mediafoundation=disabled \
 		-Dgbm=disabled \
 		-Dgles1=disabled \
 		-Dgles2=disabled \
 		-Dglvnd=disabled \
 		-Dlmsensors=disabled \
 		-Dmicrosoft-clc=disabled \
-		-Dosmesa=false \
 		-Dvalgrind=disabled \
 		-Dglx=disabled
 

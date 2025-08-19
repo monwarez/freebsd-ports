@@ -10,8 +10,11 @@ include/gbm_backend_abi.h
 @comment lib/dri/libdril_dri.so
 @comment lib/dri/r300_dri.so
 @comment lib/dri/r600_dri.so
+@comment lib/dri/r600_drv_video.so
 @comment lib/dri/radeonsi_dri.so
+@comment lib/dri/radeonsi_drv_video.so
 @comment lib/dri/virtio_gpu_dri.so
+@comment lib/dri/virtio_gpu_drv_video.so
 @comment lib/dri/vmwgfx_dri.so
 @comment lib/dri/zink_dri.so
 lib/gbm/dri_gbm.so

@@ -13,6 +13,7 @@ USES=		llvm:lib,noexport
 BUILD_DEPENDS=	libglvnd>=0:graphics/libglvnd \
 		libclc-${LLVM_PORT:T}>0:devel/libclc@${LLVM_PORT:T} \
 		spirv-tools>0:graphics/spirv-tools \
+		libva>=0:multimedia/libva \
 		spirv-llvm-translator-${LLVM_PORT:T}>0:devel/spirv-llvm-translator@${LLVM_PORT:T}
 
 OPTIONS_GROUP=		PLATFORM
@@ -42,7 +43,7 @@ MESON_ARGS+=    -Dvideo-codecs="vc1dec,h264dec,h264enc,h265dec,h265enc,av1dec,av
 
 MESON_ARGS+=	-Dandroid-libbacktrace=disabled \
 		-Dgallium-vdpau=disabled \
-		-Dgallium-va=disabled \
+		-Dgallium-va=enabled \
 		-Dgallium-mediafoundation=disabled \
 		-Dlmsensors=disabled \
 		-Dmicrosoft-clc=disabled \
