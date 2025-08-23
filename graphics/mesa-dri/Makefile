@@ -1,5 +1,6 @@
 PORTNAME=	mesa-dri
 PORTVERSION=	${MESAVERSION}
+PORTREVISION=	1
 CATEGORIES=	graphics
 
 COMMENT=	OpenGL hardware acceleration drivers for DRI2+
@@ -53,7 +54,7 @@ OPTIONS_DEFAULT+=	${_gd}
 ${_gd}_VARS+=		GALLIUM_DRIVERS+=${_gd}
 . endfor
 
-OPTIONS_GROUP_VULKAN=	anv radv swrast_vk
+OPTIONS_GROUP_VULKAN=	anv radv swrast_vk virtio
 VULKAN_DESC=		Vulkan drivers
 anv_DESC=		Intel GPU Gen9 and newer Vulkan support
 anv_BUILD_DEPENDS=	glslangValidator:graphics/glslang \
@@ -66,6 +67,7 @@ anv_CONFIGURE_ENV=	PKG_CONFIG_PATH="${LLVM_PREFIX}/libdata/pkgconfig"
 radv_DESC=		AMD/ATI Southern Islands and newer Vulkan support
 radv_BUILD_DEPENDS=	glslangValidator:graphics/glslang
 swrast_vk_DESC=		Software Rasterizer Vulkan support
+virtio_DESC=		Virtio-gpu venus support
 
 OPTIONS_EXCLUDE+=	${ARCH:Marmv7:C/.+/anv radv/}
 OPTIONS_EXCLUDE+=	${ARCH:Namd64:Ni386:Nx86_64:C/.+/anv/}

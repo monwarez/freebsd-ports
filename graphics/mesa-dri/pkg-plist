@@ -54,6 +54,7 @@ include/GL/internal/dri_interface.h
 %%anv%%lib/libvulkan_intel.so
 %%radv%%lib/libvulkan_radeon.so
 %%swrast_vk%%lib/libvulkan_lvp.so
+%%virtio%%lib/libvulkan_virtio.so
 libdata/pkgconfig/dri.pc
 @comment libdata/pkgconfig/egl.pc
 @comment libdata/pkgconfig/gbm.pc
@@ -65,3 +66,4 @@ share/drirc.d/01-freebsd.conf
 %%anv%%share/vulkan/icd.d/intel_icd.%%ARCH%%.json
 %%radv%%share/vulkan/icd.d/radeon_icd.%%ARCH%%.json
 %%swrast_vk%%share/vulkan/icd.d/lvp_icd.%%ARCH%%.json
+%%virtio%%share/vulkan/icd.d/virtio_icd.%%ARCH%%.json
