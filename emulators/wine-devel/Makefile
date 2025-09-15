@@ -1,5 +1,6 @@
 PORTNAME=	wine
 DISTVERSION=	10.15
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	https://dl.winehq.org/wine/source/10.x/
@@ -60,7 +61,7 @@ CONFIGURE_ARGS=	--verbose \
 		--with-sdl \
 		--without-udev \
 		--without-unwind \
-		--without-usb
+		--with-usb 
 CONFIGURE_ENV=	CPPBIN="${CPP}" FLEX="${LOCALBASE}/bin/flex"
 
 PIE_UNSAFE=	yes
