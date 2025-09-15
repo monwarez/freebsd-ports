@@ -5,6 +5,9 @@ CATEGORIES=	emulators
 MASTER_SITES=	https://dl.winehq.org/wine/source/10.x/
 PKGNAMESUFFIX=	-devel
 
+PATCH_SITES=	https://gitlab.winehq.org/wine/wine/-/merge_requests/
+PATCHFILES+=	7339.patch:-p1
+
 MAINTAINER=	monwarez@mailoo.org
 COMMENT=	Microsoft Windows compatibility environment
 WWW=		https://www.winehq.org
@@ -16,9 +19,10 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 ONLY_FOR_ARCHS=	amd64 i386
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/flex:textproc/flex
+LIB_DEPENDS=	libexpat.so:textproc/expat2
 
 # Only devel/llvm17 and later come with necessary include files - PR274542
-USES=		bison cpe desktop-file-utils gmake llvm:min=17,build,noexport \
+USES=		autoreconf bison cpe desktop-file-utils gmake llvm:min=17,build,noexport \
 		localbase pkgconfig sdl shebangfix tar:xz
 CPE_VENDOR=	winehq
 USE_GCC=	yes
@@ -39,6 +43,7 @@ CONFIGURE_ARGS=	--verbose \
 		--without-coreaudio \
 		--without-dbus \
 		--without-ffmpeg \
+		--with-expat \
 		--without-gettext --without-gettextpo \
 		--without-gphoto \
 		--without-gssapi \
