@@ -13,7 +13,7 @@
 @comment lib/libEGL.so
 @comment lib/libEGL.so.1
 @comment lib/libEGL.so.1.0.0
-@comment lib/libgallium-25.2.1.so
+@comment lib/libgallium-25.2.3.so
 @comment libdata/pkgconfig/dri.pc
 @comment libdata/pkgconfig/egl.pc
 @comment share/drirc.d/00-mesa-defaults.conf
